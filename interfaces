@@ -1,0 +1,28 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto p1p1
+iface p1p1 inet static
+	address 192.168.0.200
+	netmask 255.255.255.0
+	network 192.168.0.0
+	broadcast 192.168.0.255
+	gateway 192.168.0.254
+	# dns-* options are implemented by the resolvconf package, if installed
+	dns-nameservers 192.168.0.254
+
+#-- For KVM
+auto p3p1
+iface p3p1 inet manual
+
+auto br0
+iface br0 inet dhcp
+    bridge_ports p3p1
+    bridge_stp off
+    bridge_fd 0
+    bridge_maxwait 0
