@@ -1,0 +1,20 @@
+雑記20130421
+
+KVMで仮想ゲストのセットアップを行う事ができた。
+
+
+
+bridgeインターフェイスのchef化が必要
+http://heartbeats.jp/hbblog/2013/01/chef-cookbook-tips.html
+----
+ 19 #-- For KVM
+ 20 auto p3p1
+ 21 iface p3p1 inet manual
+ 22
+ 23 auto br0
+ 24 iface br0 inet dhcp
+ 25     bridge_ports p3p1
+ 26     bridge_stp off
+ 27     bridge_fd 0
+ 28     bridge_maxwait 0
+----
